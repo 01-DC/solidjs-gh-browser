@@ -1,4 +1,6 @@
+import { For } from "solid-js"
 import { repos, setUsername, username } from "../App"
+import RepoCard from "../components/RepoCard"
 
 function Home() {
 	const refetchWithUsername = (event) => {
@@ -17,6 +19,7 @@ function Home() {
 				<button class="btn btn-dark ms-3 w-auto">Fetch</button>
 			</form>
 			<h2>Github repos for {username()}</h2>
+			<For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
 		</div>
 	)
 }
