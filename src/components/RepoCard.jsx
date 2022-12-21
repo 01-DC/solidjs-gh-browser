@@ -1,3 +1,9 @@
+import { setFavRepos, favRepos } from "../pages/FavRepos"
+
+const favThis = (repo) => {
+	setFavRepos([repo, ...favRepos()])
+}
+
 function RepoCard({ repo }) {
 	return (
 		<div class="card">
@@ -13,7 +19,9 @@ function RepoCard({ repo }) {
 					<strong>{repo.owner?.login}</strong>/{repo.name}
 				</a>
 				<p class="card-text">{repo.description}</p>
-				<button class="btn btn-success">Save</button>
+				<button class="btn btn-success" onClick={() => favThis(repo)}>
+					Save
+				</button>
 			</div>
 		</div>
 	)

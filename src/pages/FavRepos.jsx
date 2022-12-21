@@ -12,5 +12,5 @@ function FavRepos() {
 	)
 }
 
-export { setFavRepos }
+export { setFavRepos, favRepos }
 export default FavRepos

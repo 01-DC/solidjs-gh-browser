@@ -1,4 +1,5 @@
 import { NavLink } from "solid-app-router"
+import { favRepos } from "../pages/FavRepos"
 
 function Nav() {
 	return (
@@ -14,7 +15,7 @@ function Nav() {
 				href="/favrepos"
 				class="btn btn-primary me-2"
 				activeClass="btn-success">
-				Favourite ~ 5
+				Favourite ~ {favRepos().length}
 			</NavLink>
 		</div>
 	)
