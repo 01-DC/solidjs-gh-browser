@@ -19,7 +19,11 @@ function Home() {
 				<button class="btn btn-dark ms-3 w-auto">Fetch</button>
 			</form>
 			<h2>Github repos for {username()}</h2>
-			<For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
+			{repos().length === 0 ? (
+				<h4>No repos found</h4>
+			) : (
+				<For each={repos()}>{(repo) => <RepoCard repo={repo} />}</For>
+			)}
 		</div>
 	)
 }
