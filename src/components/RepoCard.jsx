@@ -2,11 +2,13 @@ import { setFavRepos, favRepos } from "../pages/FavRepos"
 
 const favThis = (repo) => {
 	setFavRepos([repo, ...favRepos()])
+	localStorage.setItem("favrepos", JSON.stringify(favRepos()))
 }
 
 const unfavThis = (repoId) => {
 	const nextState = favRepos()?.filter((item) => item.id !== repoId)
 	setFavRepos(nextState)
+	localStorage.setItem("favrepos", JSON.stringify(nextState))
 }
 
 const repoIsFav = (repoId) => {

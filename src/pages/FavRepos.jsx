@@ -1,7 +1,8 @@
 import { createSignal, For } from "solid-js"
 import RepoCard from "../components/RepoCard"
 
-const [favRepos, setFavRepos] = createSignal([])
+const favFromLocal = JSON.parse(localStorage.getItem("favrepos") || "[]")
+const [favRepos, setFavRepos] = createSignal(favFromLocal)
 
 function FavRepos() {
 	return (
