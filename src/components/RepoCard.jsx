@@ -5,7 +5,7 @@ const favThis = (repo) => {
 }
 
 const unfavThis = (repoId) => {
-	const nextState = favRepos()?.filter((item = item.id !== repoId))
+	const nextState = favRepos()?.filter((item) => item.id !== repoId)
 	setFavRepos(nextState)
 }
 
@@ -31,15 +31,15 @@ function RepoCard({ repo }) {
 				<p class="card-text">{repo.description}</p>
 				{repoIsFav(repo.id) ? (
 					<button
-						class="btn btn-success"
-						onClick={() => favThis(repo)}>
-						Save
-					</button>
-				) : (
-					<button
 						class="btn btn-danger"
 						onClick={() => unfavThis(repo.id)}>
 						Unsave
+					</button>
+				) : (
+					<button
+						class="btn btn-success"
+						onClick={() => favThis(repo)}>
+						Save
 					</button>
 				)}
 			</div>
