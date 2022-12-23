@@ -4,6 +4,16 @@ const favThis = (repo) => {
 	setFavRepos([repo, ...favRepos()])
 }
 
+const unfavThis = (repoId) => {
+	const nextState = favRepos()?.filter((item = item.id !== repoId))
+	setFavRepos(nextState)
+}
+
+const repoIsFav = (repoId) => {
+	const match = favRepos()?.filter((item) => item.id === repoId)
+	return match?.length > 0
+}
+
 function RepoCard({ repo }) {
 	return (
 		<div class="card">
@@ -19,9 +29,19 @@ function RepoCard({ repo }) {
 					<strong>{repo.owner?.login}</strong>/{repo.name}
 				</a>
 				<p class="card-text">{repo.description}</p>
-				<button class="btn btn-success" onClick={() => favThis(repo)}>
-					Save
-				</button>
+				{repoIsFav(repo.id) ? (
+					<button
+						class="btn btn-success"
+						onClick={() => favThis(repo)}>
+						Save
+					</button>
+				) : (
+					<button
+						class="btn btn-danger"
+						onClick={() => unfavThis(repo.id)}>
+						Unsave
+					</button>
+				)}
 			</div>
 		</div>
 	)
